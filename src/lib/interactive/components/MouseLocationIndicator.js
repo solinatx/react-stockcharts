@@ -23,19 +23,28 @@ class MouseLocationIndicator extends Component {
 	handleMouseDown(moreProps, e) {
 		const pos = this.xy(moreProps, e);
 		if (isDefined(pos)) {
-			const { xValue, yValue, x, y } = pos;
+			const { xValue, yValue, x, y, xOrig, yOrig } = pos;
 			this.mutableState = { x, y };
+      if (!this.props.returnXY) {
 			this.props.onMouseDown([xValue, yValue], moreProps, e);
-		}
-	}
+      } else {
+
+			this.props.onMouseDown([xValue, yValue], moreProps, e, [xOrig, yOrig]);
+		  }
+	  }
+  }
 	handleClick(moreProps, e) {
 		const pos = this.xy(moreProps, e);
 		if (isDefined(pos)) {
-			const { xValue, yValue, x, y } = pos;
+			const { xValue, yValue, x, y, xOrig, yOrig } = pos;
 			this.mutableState = { x, y };
+      if (!this.props.returnXY) {
 			this.props.onClick([xValue, yValue], moreProps, e);
+      } else {
+			this.props.onClick([xValue, yValue], moreProps, e, [xOrig, yOrig]);
+      }
 		}
-	}
+	 }
 	xy(moreProps, e) {
 		const { xAccessor, plotData } = moreProps;
 		const { mouseXY, currentItem, xScale, chartConfig: { yScale } } = moreProps;
@@ -52,16 +61,20 @@ class MouseLocationIndicator extends Component {
 			const x = xScale(xValue);
 			const y = yScale(yValue);
 
-			return { xValue, yValue, x, y };
+      return { xValue, yValue, x, y, xOrig: mouseXY[0], yOrig: mouseXY[1] };
 		}
 	}
 	handleMousePosChange(moreProps, e) {
 		if (!shallowEqual(moreProps.mousXY, moreProps.prevMouseXY)) {
 			const pos = this.xy(moreProps, e);
 			if (isDefined(pos)) {
-				const { xValue, yValue, x, y } = pos;
+				const { xValue, yValue, x, y, xOrig, yOrig } = pos;
 				this.mutableState = { x, y };
-				this.props.onMouseMove([xValue, yValue], e);
+        if (!this.props.returnXY) {
+				  this.props.onMouseMove([xValue, yValue], e);
+        } else {
+				  this.props.onMouseMove([xValue, yValue], e, [xOrig, yOrig]);
+        }
 			}
 		}
 	}
@@ -135,6 +148,8 @@ MouseLocationIndicator.propTypes = {
 	strokeWidth: PropTypes.number.isRequired,
 	opacity: PropTypes.number.isRequired,
 	disablePan: PropTypes.bool.isRequired,
+
+  returnXY: PropTypes.bool,
 };
 
 MouseLocationIndicator.defaultProps = {
@@ -146,6 +161,7 @@ MouseLocationIndicator.defaultProps = {
 	strokeWidth: 1,
 	opacity: 1,
 	disablePan: true,
+  returnXY: false,
 };
 
 export default MouseLocationIndicator;

@@ -61,12 +61,12 @@ class Line extends Component {
 	// }
 	renderSVG(moreProps) {
 		const { stroke, strokeWidth, strokeOpacity, strokeDasharray } = this.props;
-    const { mouseXY, xScale, yScale } = moreProps;
+    const { mouseXY, xScale, chartConfig: { yScale } } = moreProps;
 		const lineWidth = strokeWidth;
 
 		const { path } = this.props;
     const line = d3Line()
-      .x(d => xScale(d[0]))
+      // .x(d => xScale(d[0]))
       // .y(d => yScale(d[1]))
       .curve(d3CurveBasis)
     const d = line(path)
@@ -76,7 +76,8 @@ class Line extends Component {
 				d={d}
 				stroke={stroke} strokeWidth={lineWidth}
 				strokeDasharray={getStrokeDasharray(strokeDasharray)}
-				strokeOpacity={strokeOpacity} />
+				strokeOpacity={strokeOpacity}
+        fill="none"/>
 		);
 	}
 	render() {
@@ -163,7 +164,7 @@ class Line extends Component {
 // }
 
 Line.propTypes = {
-	lineData: PropTypes.array.isRequired,
+	path: PropTypes.array.isRequired,
 
 	interactiveCursorClass: PropTypes.string,
 	stroke: PropTypes.string.isRequired,

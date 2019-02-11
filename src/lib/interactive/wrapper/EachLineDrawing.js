@@ -169,39 +169,7 @@ class EachLineDrawing extends Component {
 				strokeOpacity={strokeOpacity}
 				strokeDasharray={strokeDasharray}
 				interactiveCursorClass={lineInteractiveCursor}
-				{/*onDragStart={this.handleLineDragStart}
-				onDrag={this.handleLineDrag}
-				onDragComplete={onDragComplete}
-        */}
        />
-			<ClickableCircle
-				ref={this.saveNodeType("edge1")}
-				show={selected || hover}
-				cx={x1Value}
-				cy={y1Value}
-				r={r}
-				fill={edgeFill}
-				stroke={anchor === "edge1" ? stroke : edgeStroke}
-				strokeWidth={edgeStrokeWidth}
-				strokeOpacity={1}
-				interactiveCursorClass={edgeInteractiveCursor}
-				onDragStart={this.handleEdge1DragStart}
-				onDrag={this.handleEdge1Drag}
-				onDragComplete={this.handleDragComplete} />
-			<ClickableCircle
-				ref={this.saveNodeType("edge2")}
-				show={selected || hover}
-				cx={x2Value}
-				cy={y2Value}
-				r={r}
-				fill={edgeFill}
-				stroke={anchor === "edge2" ? stroke : edgeStroke}
-				strokeWidth={edgeStrokeWidth}
-				strokeOpacity={1}
-				interactiveCursorClass={edgeInteractiveCursor}
-				onDragStart={this.handleEdge2DragStart}
-				onDrag={this.handleEdge2Drag}
-				onDragComplete={this.handleDragComplete} />
 			<HoverTextNearMouse
 				show={hoverTextEnabled && hover}
 				{...restHoverTextProps}

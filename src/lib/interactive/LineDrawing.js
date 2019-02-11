@@ -31,7 +31,9 @@ class LineDrawing extends Component {
 		this.getSelectionState = isHoverForInteractiveType("LineDrawings")
 			.bind(this);
 
+    const { drawings } = this.props || []
 		this.state = {
+      drawings
 		};
 		this.nodes = [];
 	}
@@ -66,33 +68,34 @@ class LineDrawing extends Component {
 	// 		});
 	// 	}
 	// }
-	handleDrawLine(xyValue) {
+	handleDrawLine(xyValue, e, xy) {
 		const { current } = this.state;
 		if (isDefined(current) && isDefined(current.path)) {
 			this.mouseMoved = true;
 			this.setState({
 				current: {
-					path: current.path.concat([xyValue]),
+					path: current.path.concat([xy]),
 				}
 			});
 		}
 	}
-	handleStart(xyValue, moreProps, e) {
+	handleStart(xyValue, moreProps, e, xy) {
 		const { current } = this.state;
 
+    console.log('this is path', xy)
 		if (isNotDefined(current) || isNotDefined(current.path)) {
 			this.mouseMoved = false;
 
 			this.setState({
 				current: {
-					path: [xyValue],
+					path: [xy],
 				},
 			}, () => {
 				this.props.onStart(moreProps, e);
 			});
 		}
 	}
-	handleEnd(xyValue, moreProps, e) {
+	handleEnd(xyValue, moreProps, e, xy) {
 		const { current } = this.state;
 		const { drawings, appearance } = this.props;
 
@@ -103,12 +106,11 @@ class LineDrawing extends Component {
 			const newDrawings = [
 				...drawings.map(d => ({ ...d, selected: false })),
 				{
-					path: current.path.concat([xyValue]),
+					path: current.path.concat([xy]),
 					selected: true,
 					appearance,
 				}
 			];
-      console.log('new drawings', newDrawings)
 			this.setState({
 				current: null,
 				drawings: newDrawings
@@ -122,8 +124,8 @@ class LineDrawing extends Component {
 		const { enabled, snap, shouldDisableSnap, snapTo } = this.props;
 		const { currentPositionRadius, currentPositionStroke } = this.props;
 		const { currentPositionstrokeOpacity, currentPositionStrokeWidth } = this.props;
-		const { hoverText, drawings } = this.props;
-		const { current, override } = this.state;
+		const { hoverText } = this.props;
+		const { current, override, drawings } = this.state;
 
 		const tempLine = isDefined(current) && isDefined(current.end)
 			? <Line
@@ -134,7 +136,6 @@ class LineDrawing extends Component {
 				strokeOpacity={appearance.strokeOpacity} />
 			: null;
 
-    console.log('drawings', drawings)
 		return <g>
 			{drawings.map((each, idx) => {
 				const eachAppearance = isDefined(each.appearance)
@@ -179,6 +180,7 @@ class LineDrawing extends Component {
 				onMouseDown={this.handleStart}
 				onClick={this.handleEnd}
 				onMouseMove={this.handleDrawLine}
+        returnXY={true}
 			/>
 		</g>;
 	}
