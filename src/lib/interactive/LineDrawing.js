@@ -127,10 +127,10 @@ class LineDrawing extends Component {
 		const { hoverText } = this.props;
 		const { current, override, drawings } = this.state;
 
-		const tempLine = isDefined(current) && isDefined(current.end)
+		const tempLine = isDefined(current) && isDefined(current.path)
 			? <Line
 				noHover
-				y2Value={current.end[1]}
+				path={current.path}
 				stroke={appearance.stroke}
 				strokeWidth={appearance.strokeWidth}
 				strokeOpacity={appearance.strokeOpacity} />
