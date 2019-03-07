@@ -66,8 +66,8 @@ class Line extends Component {
 
 		const { path } = this.props;
     const line = d3Line()
-      // .x(d => xScale(d[0]))
-      // .y(d => yScale(d[1]))
+      .x(d => xScale(d[0]))
+      .y(d => yScale(d[1]))
       .curve(d3CurveBasis)
     const d = line(path)
 

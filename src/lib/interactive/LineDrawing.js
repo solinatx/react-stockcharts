@@ -74,7 +74,7 @@ class LineDrawing extends Component {
 			this.mouseMoved = true;
 			this.setState({
 				current: {
-					path: current.path.concat([xy]),
+					path: current.path.concat([xyValue]),
 				}
 			});
 		}
@@ -88,7 +88,7 @@ class LineDrawing extends Component {
 
 			this.setState({
 				current: {
-					path: [xy],
+					path: [xyValue],
 				},
 			}, () => {
 				this.props.onStart(moreProps, e);
@@ -106,7 +106,7 @@ class LineDrawing extends Component {
 			const newDrawings = [
 				...drawings.map(d => ({ ...d, selected: false })),
 				{
-					path: current.path.concat([xy]),
+					path: current.path.concat([xyValue]),
 					selected: true,
 					appearance,
 				}
