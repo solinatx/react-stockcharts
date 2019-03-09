@@ -159,7 +159,7 @@ class EachLineDrawing extends Component {
     console.log('rendering path', path)
 		return <g>
 			<Line
-				ref={this.saveNodeType("line")}
+				ref={this.saveNodeType("drawing")}
 				selected={selected || hover}
 				onHover={this.handleHover}
 				onUnHover={this.handleHover}
