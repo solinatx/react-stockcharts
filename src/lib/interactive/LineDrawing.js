@@ -31,9 +31,9 @@ class LineDrawing extends Component {
 		this.getSelectionState = isHoverForInteractiveType("LineDrawings")
 			.bind(this);
 
-    const { drawings } = this.props || []
+		const { drawings } = this.props || [];
 		this.state = {
-      drawings
+			drawings
 		};
 		this.nodes = [];
 	}
@@ -60,7 +60,7 @@ class LineDrawing extends Component {
 	// 					...each,
 	// 					selected: false,
 	// 				});
-  //
+	//
 	// 		this.setState({
 	// 			override: null,
 	// 		}, () => {
@@ -68,7 +68,7 @@ class LineDrawing extends Component {
 	// 		});
 	// 	}
 	// }
-	handleDrawLine(xyValue, e, xy) {
+	handleDrawLine(xyValue) {
 		const { current } = this.state;
 		if (isDefined(current) && isDefined(current.path)) {
 			this.mouseMoved = true;
@@ -79,10 +79,9 @@ class LineDrawing extends Component {
 			});
 		}
 	}
-	handleStart(xyValue, moreProps, e, xy) {
+	handleStart(xyValue, moreProps, e) {
 		const { current } = this.state;
 
-    console.log('this is path', xy)
 		if (isNotDefined(current) || isNotDefined(current.path)) {
 			this.mouseMoved = false;
 
@@ -95,7 +94,7 @@ class LineDrawing extends Component {
 			});
 		}
 	}
-	handleEnd(xyValue, moreProps, e, xy) {
+	handleEnd(xyValue, moreProps, e) {
 		const { current } = this.state;
 		const { drawings, appearance } = this.props;
 
@@ -180,7 +179,7 @@ class LineDrawing extends Component {
 				onMouseDown={this.handleStart}
 				onClick={this.handleEnd}
 				onMouseMove={this.handleDrawLine}
-        returnXY={true}
+				returnXY={true}
 			/>
 		</g>;
 	}
