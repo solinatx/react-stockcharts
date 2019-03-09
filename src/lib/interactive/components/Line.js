@@ -7,9 +7,9 @@ import GenericChartComponent from "../../GenericChartComponent";
 import { getMouseCanvas } from "../../GenericComponent";
 
 import {
-	isDefined,
+	// isDefined,
 	noop,
-	hexToRGBA,
+	// hexToRGBA,
 	getStrokeDasharray,
 	strokeDashTypes,
 } from "../../utils";
@@ -22,38 +22,38 @@ class Line extends Component {
 		// this.drawOnCanvas = this.drawOnCanvas.bind(this);
 		this.isHover = this.isHover.bind(this);
 	}
-	isHover(moreProps) {
-		const { tolerance, onHover } = this.props;
+	// isHover(moreProps) {
+	// 	const { tolerance, onHover } = this.props;
 
-		// if (isDefined(onHover)) {
-		// 	const { x1Value, x2Value, y1Value, y2Value, type } = this.props;
-		// 	const { mouseXY, xScale } = moreProps;
-		// 	const { chartConfig: { yScale } } = moreProps;
-    //
-		// 	const hovering = isHovering({
-		// 		x1Value, y1Value,
-		// 		x2Value, y2Value,
-		// 		mouseXY,
-		// 		type,
-		// 		tolerance,
-		// 		xScale,
-		// 		yScale,
-		// 	});
-    //
-		// 	// console.log("hovering ->", hovering);
-    //
-		// 	return hovering;
-		// }
-		return false;
-	}
+	// if (isDefined(onHover)) {
+	// 	const { x1Value, x2Value, y1Value, y2Value, type } = this.props;
+	// 	const { mouseXY, xScale } = moreProps;
+	// 	const { chartConfig: { yScale } } = moreProps;
+	//
+	// 	const hovering = isHovering({
+	// 		x1Value, y1Value,
+	// 		x2Value, y2Value,
+	// 		mouseXY,
+	// 		type,
+	// 		tolerance,
+	// 		xScale,
+	// 		yScale,
+	// 	});
+	//
+	// 	// console.log("hovering ->", hovering);
+	//
+	// 	return hovering;
+	// }
+	// 	return false;
+	// }
 	// drawOnCanvas(ctx, moreProps) {
 	// 	const { stroke, strokeWidth, strokeOpacity, strokeDasharray } = this.props;
 	// 	const { x1, y1, x2, y2 } = helper(this.props, moreProps);
-  //
+	//
 	// 	ctx.lineWidth = strokeWidth;
 	// 	ctx.strokeStyle = hexToRGBA(stroke, strokeOpacity);
 	// 	ctx.setLineDash(getStrokeDasharray(strokeDasharray).split(","));
-  //
+	//
 	// 	ctx.beginPath();
 	// 	ctx.moveTo(x1, y1);
 	// 	ctx.lineTo(x2, y2);
@@ -61,15 +61,15 @@ class Line extends Component {
 	// }
 	renderSVG(moreProps) {
 		const { stroke, strokeWidth, strokeOpacity, strokeDasharray } = this.props;
-    const { mouseXY, xScale, chartConfig: { yScale } } = moreProps;
+		const { xScale, chartConfig: { yScale } } = moreProps;
 		const lineWidth = strokeWidth;
 
 		const { path } = this.props;
-    const line = d3Line()
-      .x(d => xScale(d[0]))
-      .y(d => yScale(d[1]))
-      .curve(d3CurveBasis)
-    const d = line(path)
+		const line = d3Line()
+			.x(d => xScale(d[0]))
+			.y(d => yScale(d[1]))
+			.curve(d3CurveBasis);
+		const d = line(path);
 
 		return (
 			<path
@@ -77,7 +77,7 @@ class Line extends Component {
 				stroke={stroke} strokeWidth={lineWidth}
 				strokeDasharray={getStrokeDasharray(strokeDasharray)}
 				strokeOpacity={strokeOpacity}
-        fill="none"/>
+				fill="none"/>
 		);
 	}
 	render() {

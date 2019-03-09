@@ -7,7 +7,7 @@ import { saveNodeType, isHover } from "../utils";
 import { getXValue } from "../../utils/ChartDataUtil";
 
 import Line from "../components/Line";
-import ClickableCircle from "../components/ClickableCircle";
+// import ClickableCircle from "../components/ClickableCircle";
 import HoverTextNearMouse from "../components/HoverTextNearMouse";
 
 class EachLineDrawing extends Component {
@@ -18,7 +18,7 @@ class EachLineDrawing extends Component {
 		// this.handleEdge2Drag = this.handleEdge2Drag.bind(this);
 		// this.handleLineDragStart = this.handleLineDragStart.bind(this);
 		// this.handleLineDrag = this.handleLineDrag.bind(this);
-    //
+		//
 		// this.handleEdge1DragStart = this.handleEdge1DragStart.bind(this);
 		// this.handleEdge2DragStart = this.handleEdge2DragStart.bind(this);
 		// this.handleDragComplete = this.handleDragComplete.bind(this);
@@ -38,7 +38,7 @@ class EachLineDrawing extends Component {
 	// 		x1Value, y1Value,
 	// 		x2Value, y2Value,
 	// 	} = this.props;
-  //
+	//
 	// 	this.dragStart = {
 	// 		x1Value, y1Value,
 	// 		x2Value, y2Value,
@@ -46,28 +46,28 @@ class EachLineDrawing extends Component {
 	// }
 	// handleLineDrag(moreProps) {
 	// 	const { index, onDrag } = this.props;
-  //
+	//
 	// 	const {
 	// 		x1Value, y1Value,
 	// 		x2Value, y2Value,
 	// 	} = this.dragStart;
-  //
+	//
 	// 	const { xScale, chartConfig: { yScale }, xAccessor, fullData } = moreProps;
 	// 	const { startPos, mouseXY } = moreProps;
-  //
+	//
 	// 	const x1 = xScale(x1Value);
 	// 	const y1 = yScale(y1Value);
 	// 	const x2 = xScale(x2Value);
 	// 	const y2 = yScale(y2Value);
-  //
+	//
 	// 	const dx = startPos[0] - mouseXY[0];
 	// 	const dy = startPos[1] - mouseXY[1];
-  //
+	//
 	// 	const newX1Value = getXValue(xScale, xAccessor, [x1 - dx, y1 - dy], fullData);
 	// 	const newY1Value = yScale.invert(y1 - dy);
 	// 	const newX2Value = getXValue(xScale, xAccessor, [x2 - dx, y2 - dy], fullData);
 	// 	const newY2Value = yScale.invert(y2 - dy);
-  //
+	//
 	// 	onDrag(index, {
 	// 		x1Value: newX1Value,
 	// 		y1Value: newY1Value,
@@ -96,9 +96,9 @@ class EachLineDrawing extends Component {
 	// 	const {
 	// 		x2Value, y2Value,
 	// 	} = this.props;
-  //
+	//
 	// 	const [x1Value, y1Value] = getNewXY(moreProps);
-  //
+	//
 	// 	onDrag(index, {
 	// 		x1Value,
 	// 		y1Value,
@@ -111,9 +111,9 @@ class EachLineDrawing extends Component {
 	// 	const {
 	// 		x1Value, y1Value,
 	// 	} = this.props;
-  //
+	//
 	// 	const [x2Value, y2Value] = getNewXY(moreProps);
-  //
+	//
 	// 	onDrag(index, {
 	// 		x1Value,
 	// 		y1Value,
@@ -135,16 +135,16 @@ class EachLineDrawing extends Component {
 			strokeWidth,
 			strokeOpacity,
 			strokeDasharray,
-			r,
-			edgeStrokeWidth,
-			edgeFill,
-			edgeStroke,
-			edgeInteractiveCursor,
+			// r,
+			// edgeStrokeWidth,
+			// edgeFill,
+			// edgeStroke,
+			// edgeInteractiveCursor,
 			lineInteractiveCursor,
 			hoverText,
 			selected,
 
-			onDragComplete,
+			// onDragComplete,
 		} = this.props;
 
 		const {
@@ -154,9 +154,9 @@ class EachLineDrawing extends Component {
 			...restHoverTextProps
 		} = hoverText;
 
-		const { hover, anchor } = this.state;
+		const { hover } = this.state;
 
-    console.log('rendering path', path)
+		console.log("rendering path", path);
 		return <g>
 			<Line
 				ref={this.saveNodeType("drawing")}
@@ -169,7 +169,7 @@ class EachLineDrawing extends Component {
 				strokeOpacity={strokeOpacity}
 				strokeDasharray={strokeDasharray}
 				interactiveCursorClass={lineInteractiveCursor}
-       />
+			/>
 			<HoverTextNearMouse
 				show={hoverTextEnabled && hover}
 				{...restHoverTextProps}
