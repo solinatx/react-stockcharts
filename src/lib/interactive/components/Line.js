@@ -22,30 +22,11 @@ class Line extends Component {
 		// this.drawOnCanvas = this.drawOnCanvas.bind(this);
 		this.isHover = this.isHover.bind(this);
 	}
-	// isHover(moreProps) {
-	// 	const { tolerance, onHover } = this.props;
+	isHover() {
+		// const { tolerance, onHover } = this.props;
 
-	// if (isDefined(onHover)) {
-	// 	const { x1Value, x2Value, y1Value, y2Value, type } = this.props;
-	// 	const { mouseXY, xScale } = moreProps;
-	// 	const { chartConfig: { yScale } } = moreProps;
-	//
-	// 	const hovering = isHovering({
-	// 		x1Value, y1Value,
-	// 		x2Value, y2Value,
-	// 		mouseXY,
-	// 		type,
-	// 		tolerance,
-	// 		xScale,
-	// 		yScale,
-	// 	});
-	//
-	// 	// console.log("hovering ->", hovering);
-	//
-	// 	return hovering;
-	// }
-	// 	return false;
-	// }
+		return false;
+	}
 	// drawOnCanvas(ctx, moreProps) {
 	// 	const { stroke, strokeWidth, strokeOpacity, strokeDasharray } = this.props;
 	// 	const { x1, y1, x2, y2 } = helper(this.props, moreProps);

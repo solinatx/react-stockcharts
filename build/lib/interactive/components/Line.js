@@ -45,46 +45,29 @@ var Line = function (_Component) {
 		_this.isHover = _this.isHover.bind(_this);
 		return _this;
 	}
-	// isHover(moreProps) {
-	// 	const { tolerance, onHover } = this.props;
-
-	// if (isDefined(onHover)) {
-	// 	const { x1Value, x2Value, y1Value, y2Value, type } = this.props;
-	// 	const { mouseXY, xScale } = moreProps;
-	// 	const { chartConfig: { yScale } } = moreProps;
-	//
-	// 	const hovering = isHovering({
-	// 		x1Value, y1Value,
-	// 		x2Value, y2Value,
-	// 		mouseXY,
-	// 		type,
-	// 		tolerance,
-	// 		xScale,
-	// 		yScale,
-	// 	});
-	//
-	// 	// console.log("hovering ->", hovering);
-	//
-	// 	return hovering;
-	// }
-	// 	return false;
-	// }
-	// drawOnCanvas(ctx, moreProps) {
-	// 	const { stroke, strokeWidth, strokeOpacity, strokeDasharray } = this.props;
-	// 	const { x1, y1, x2, y2 } = helper(this.props, moreProps);
-	//
-	// 	ctx.lineWidth = strokeWidth;
-	// 	ctx.strokeStyle = hexToRGBA(stroke, strokeOpacity);
-	// 	ctx.setLineDash(getStrokeDasharray(strokeDasharray).split(","));
-	//
-	// 	ctx.beginPath();
-	// 	ctx.moveTo(x1, y1);
-	// 	ctx.lineTo(x2, y2);
-	// 	ctx.stroke();
-	// }
-
 
 	_createClass(Line, [{
+		key: "isHover",
+		value: function isHover() {
+			// const { tolerance, onHover } = this.props;
+
+			return false;
+		}
+		// drawOnCanvas(ctx, moreProps) {
+		// 	const { stroke, strokeWidth, strokeOpacity, strokeDasharray } = this.props;
+		// 	const { x1, y1, x2, y2 } = helper(this.props, moreProps);
+		//
+		// 	ctx.lineWidth = strokeWidth;
+		// 	ctx.strokeStyle = hexToRGBA(stroke, strokeOpacity);
+		// 	ctx.setLineDash(getStrokeDasharray(strokeDasharray).split(","));
+		//
+		// 	ctx.beginPath();
+		// 	ctx.moveTo(x1, y1);
+		// 	ctx.lineTo(x2, y2);
+		// 	ctx.stroke();
+		// }
+
+	}, {
 		key: "renderSVG",
 		value: function renderSVG(moreProps) {
 			var _props = this.props,
