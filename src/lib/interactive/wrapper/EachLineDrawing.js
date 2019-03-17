@@ -156,7 +156,6 @@ class EachLineDrawing extends Component {
 
 		const { hover } = this.state;
 
-		console.log("rendering path", path);
 		return <g>
 			<Line
 				ref={this.saveNodeType("drawing")}
