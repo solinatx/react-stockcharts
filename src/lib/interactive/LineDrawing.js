@@ -123,8 +123,8 @@ class LineDrawing extends Component {
 		const { enabled, snap, shouldDisableSnap, snapTo } = this.props;
 		const { currentPositionRadius, currentPositionStroke } = this.props;
 		const { currentPositionstrokeOpacity, currentPositionStrokeWidth } = this.props;
-		const { hoverText } = this.props;
-		const { current, override, drawings } = this.state;
+		const { hoverText, drawings } = this.props;
+		const { current, override } = this.state;
 
 		const tempLine = isDefined(current) && isDefined(current.path)
 			? <Line
